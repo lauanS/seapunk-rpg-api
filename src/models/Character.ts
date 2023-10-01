@@ -1,7 +1,6 @@
-import { Schema, model, version } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const characterSchema = new Schema({
-    id: { type: Schema.Types.ObjectId},
+const CharacterSchema = new Schema({
     name: { type: String, required: true },
     // class: { type: String, required: true },
     // race: { type: String, required: true },
@@ -9,6 +8,6 @@ const characterSchema = new Schema({
     // deity: { type: String, required: true },
 }, {versionKey: false});
 
-const character = model("Characters", characterSchema);
+const Character = model("characters", CharacterSchema);
 
-export default character;
+export default Character;
