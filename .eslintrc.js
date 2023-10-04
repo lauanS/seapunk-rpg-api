@@ -1,14 +1,17 @@
 module.exports = {
+  'root': true,
   'env': {
     'browser': true,
     'node': true,
     'es6': true
   },
+  'parser': '@typescript-eslint/parser',
+  'plugins': ['@typescript-eslint'],
   'parserOptions': {
     'ecmaVersion': 9,
     'sourceType': 'module'
   },
-  'extends': 'eslint:recommended',
+  'extends':  ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   'rules': {
     'indent': ['error', 2],
     'linebreak-style': ['error', 'unix'],
@@ -17,7 +20,12 @@ module.exports = {
     'semi': ['error', 'always'],
     'require-atomic-updates': 'off',
     'no-console': 'off',
-    'no-trailing-spaces': 'error'
+    'no-trailing-spaces': ['error'],
+    'no-multi-spaces': ['error'],
+    'space-infix-ops': ['error'],
+    'spaced-comment': ['error', 'always'],
+    'space-before-blocks': ['error', 'always'],
+    'block-spacing': ['error', 'always']
   },
   'globals': {
     'describe': false,
