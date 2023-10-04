@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const connection_string:string = 'mongodb://localhost:27017/Seapunk';
+const connection_string:string = process.env.MONGODB_URI || '';
 
 async function dbConnect() {
   const connection = mongoose.connection;
