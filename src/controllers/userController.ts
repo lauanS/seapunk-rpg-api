@@ -1,4 +1,4 @@
-import {User} from '../models/User';
+import { User } from '../models/User';
 import { Request, Response } from 'express';
 
 class UserController {
@@ -10,7 +10,7 @@ class UserController {
 
     }
     catch(er: unknown) {
-      res.status(500).json({ message: `${er} - falha ao buscar usuário`});
+      res.status(500).json({ message: `${er} - falha ao buscar usuário` });
     }
   }
 
@@ -22,7 +22,7 @@ class UserController {
 
     }
     catch(er: unknown) {
-      res.status(500).json({ message: `${er} - falha ao buscar usuário de id ${req.params.id}`});
+      res.status(500).json({ message: `${er} - falha ao buscar usuário de id ${req.params.id}` });
     }
   }
 
@@ -30,11 +30,11 @@ class UserController {
     try{
       const id = req.params.id;
       await User.findByIdAndUpdate(id, req.body).exec();
-      res.status(200).json({message: `Usuário de id ${req.params.id} atualizado com sucesso`});
+      res.status(200).json({ message: `Usuário de id ${req.params.id} atualizado com sucesso` });
 
     }
     catch(er: unknown) {
-      res.status(500).json({ message: `${er} - falha ao atualizar usuário de id ${req.params.id}`});
+      res.status(500).json({ message: `${er} - falha ao atualizar usuário de id ${req.params.id}` });
     }
   }
 
@@ -42,11 +42,11 @@ class UserController {
     try{
       const id = req.params.id;
       await User.findByIdAndDelete(id, req.body).exec();
-      res.status(200).json({message: `Usuário de id ${req.params.id} removido com sucesso`});
+      res.status(200).json({ message: `Usuário de id ${req.params.id} removido com sucesso` });
 
     }
     catch(er: unknown) {
-      res.status(500).json({ message: `${er} - falha ao remover usuário de id ${req.params.id}`});
+      res.status(500).json({ message: `${er} - falha ao remover usuário de id ${req.params.id}` });
     }
   }
 

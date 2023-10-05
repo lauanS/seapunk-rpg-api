@@ -8,7 +8,7 @@ const CharacterSchema = new Schema({
   // background: { type: String, required: true },
   // deity: { type: String, required: true },
   user: UserSchema,
-}, {versionKey: false});
+}, { versionKey: false });
 
 const Character = model('characters', CharacterSchema);
 

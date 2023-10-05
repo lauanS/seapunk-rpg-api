@@ -15,6 +15,7 @@ module.exports = {
   'rules': {
     'indent': ['error', 2],
     'linebreak-style': ['error', 'unix'],
+    'capitalized-comments': ['warn'],
     'eol-last': ['error', 'always'],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
@@ -22,10 +23,14 @@ module.exports = {
     'no-console': 'off',
     'no-trailing-spaces': ['error'],
     'no-multi-spaces': ['error'],
+    'no-multiple-empty-lines': ['error', { 'max': 1 }],
+    'comma-spacing': ['error'],
+    'arrow-spacing': ['error'],
     'space-infix-ops': ['error'],
+    'block-spacing': ['error'],
+    'object-curly-spacing': ['error', 'always'],
     'spaced-comment': ['error', 'always'],
     'space-before-blocks': ['error', 'always'],
-    'block-spacing': ['error', 'always']
   },
   'globals': {
     'describe': false,
