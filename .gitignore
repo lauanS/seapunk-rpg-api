@@ -5,3 +5,6 @@
 # Envs
 .env*
 !.env.example
+
+# Local files
+/local
