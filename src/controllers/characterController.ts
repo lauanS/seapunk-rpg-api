@@ -1,5 +1,5 @@
-import Character from '../models/Character';
-import { User } from '../models/User';
+import Character from 'models/Character';
+import { User } from 'models/User';
 import { Request, Response } from 'express';
 
 class CharacterController {

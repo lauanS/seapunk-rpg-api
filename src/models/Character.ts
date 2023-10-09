@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { UserSchema } from './User';
+import { UserSchema } from 'models/User';
 
 const CharacterSchema = new Schema({
   name: { type: String, required: true },

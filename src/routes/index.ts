@@ -1,8 +1,8 @@
 import express from 'express';
 import { Request, Response } from 'express';
 import { Express } from 'express-serve-static-core';
-import characters from './character';
-import users from './user';
+import characters from 'routes/character';
+import users from 'routes/user';
 
 const routes = (app: Express) => {
   app.route('/')
