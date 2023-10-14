@@ -2,10 +2,10 @@
   "name": "seapunk-rpg-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "app": "nodemon src/app.ts",
+    "dev": "NODE_ENV=dev nodemon -r tsconfig-paths/register src/server.ts",
     "tsc": "node_modules/.bin/tsc "
   },
   "author": "A-nita lauanS",
@@ -18,8 +18,11 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.18",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
     "eslint": "^8.50.0",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   }
 }
