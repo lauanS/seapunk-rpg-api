@@ -6,7 +6,7 @@
   "scripts": {
     "test": "vitest",
     "dev": "NODE_ENV=dev nodemon -r tsconfig-paths/register src/server.ts",
-    "tsc": "node_modules/.bin/tsc "
+    "tsc": "tsc -p tsconfig.build.json"
   },
   "author": "A-nita lauanS",
   "license": "MIT",
