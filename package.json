@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "NODE_ENV=dev nodemon -r tsconfig-paths/register src/server.ts",
     "tsc": "node_modules/.bin/tsc "
   },
@@ -24,6 +24,7 @@
     "eslint": "^8.50.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   }
 }
