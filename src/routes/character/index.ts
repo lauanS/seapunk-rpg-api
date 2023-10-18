@@ -1,9 +1,13 @@
-import express from 'express';
-import CharacterCreate from 'routes/character/create';
+import { Request, Response } from 'express';
 
-const router = express.Router();
+import CreateCharacterRepository from '@repositories/character';
+import CreateCharacterService from '@services/character/create';
+import CreateCharacterRoute from '@routes/character/create';
 
-/* POST */
-router.post('/create', CharacterCreate.validation, CharacterCreate.controller);
+const createCharacterRepository = new CreateCharacterRepository();
+const createCharacterService = new CreateCharacterService(createCharacterRepository);
+const createCharacterRoute = new CreateCharacterRoute(createCharacterService);
 
-export default router;
+export default {
+  create: (req: Request, res: Response) => createCharacterRoute.controller(req, res)
+};

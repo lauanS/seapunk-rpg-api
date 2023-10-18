@@ -1,12 +1,25 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
+import { Service } from '@services/index';
 import { z } from 'zod';
 
 export default class CreateCharacterRoute {
-  static controller (req: Request, res: Response): void {
-    res.status(200).jsonp({ success: true, result: req.body });
+  constructor (
+    private createCharacterService: Service
+  ) {}
+
+  public async controller (req: Request, res: Response): Promise<void> {
+    try {
+      const bodyParsed = this.validate(req);
+      const result = await this.createCharacterService.execute(bodyParsed);
+
+      res.status(200).jsonp({ success: true, result: result });
+    } catch (error) {
+      console.log(error);
+      res.status(200).jsonp({ success: false, result: error });
+    }
   }
 
-  static validation (req: Request, res: Response, next: NextFunction): void {
+  private validate (req: Request) : createCharacterParams {
     try {
       const schemaValidator = z.object({
         name: z.string(),
@@ -28,9 +41,9 @@ export default class CreateCharacterRoute {
         throw 'As informações fornecidas são inválidas';
       }
 
-      next();
+      return bodyParsed.data;
     } catch (error) {
-      res.status(200).jsonp({ success: false, result: typeof error === 'string' ? error : 'Ocorreu um erro' });
+      throw 'Ocorreu um erro na validação';
     }
   }
 }
