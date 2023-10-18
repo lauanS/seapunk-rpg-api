@@ -1,4 +1,4 @@
-import CreateCharacterService from '@services/character/create';
+import CreateCharacterService from '@/services/character/create';
 import { expect, test } from 'vitest';
 
 test('Create a character', async () => {

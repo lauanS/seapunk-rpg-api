@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Service } from '@services/index';
+import { Service } from '@/services';
 import { z } from 'zod';
 
 export default class CreateCharacterRoute {

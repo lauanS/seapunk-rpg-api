@@ -1,5 +1,5 @@
-import { CharacterRepository } from '@repositories/_interfaces/character';
-import { Service } from '@services/index';
+import { CharacterRepository } from '@/repositories/_interfaces/character';
+import { Service } from '@/services';
 
 export default class CreateCharacterService implements Service {
   constructor (
