@@ -9,4 +9,8 @@ export default class implements CharacterRepository {
   list(): Promise<unknown> {
     return CharacterModel.find().exec();
   }
+
+  findById(params: string): Promise<unknown> {
+    return CharacterModel.findById(params).exec();
+  }
 }
