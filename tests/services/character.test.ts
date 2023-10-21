@@ -9,7 +9,8 @@ test('Create a character', async () => {
         db.push(params);
         resolve(params);
       });
-    }
+    },
+    list: () => new Promise<void>((resolve) => resolve())
   };
 
   const params = {

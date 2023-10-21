@@ -5,4 +5,8 @@ export default class implements CharacterRepository {
   create(params: createCharacterParams): Promise<unknown> {
     return CharacterModel.create(params);
   }
+
+  list(): Promise<unknown> {
+    return CharacterModel.find().exec();
+  }
 }
