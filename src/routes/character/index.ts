@@ -17,9 +17,9 @@ import ListCharacterRoute from '@/routes/character/list';
 const listCharacterService = new ListCharacterService(characterRepository);
 const listCharacterRoute = new ListCharacterRoute(listCharacterService);
 
-/* Find by id */
+/* Find by Id */
 import FindByIdCharacterService from '@/services/character/findById';
-import FindByIdCharacterRoute from '@/routes/character/list';
+import FindByIdCharacterRoute from '@/routes/character/findById';
 
 const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
 const findByIdCharacterRoute = new FindByIdCharacterRoute(findByIdCharacterService);

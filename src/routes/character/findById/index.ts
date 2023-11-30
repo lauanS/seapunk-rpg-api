@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Service } from '@/services/protocols';
 import { z } from 'zod';
 
-export default class CreateCharacterRoute {
+export default class FindByIdCharacterRoute {
   constructor (
     private findByIdCharacterService: Service
   ) {}
