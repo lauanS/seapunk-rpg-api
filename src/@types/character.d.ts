@@ -3,6 +3,7 @@ import { Types } from 'mongoose';
 interface iCharacterRepository {
   create(params: iCreateCharacterParams): Promise<iCharacter>;
   list(): Promise<iCharacter[]>;
+  findById(id: string): Promise<iCharacter|null>;
 }
 
 interface iCreateCharacterParams {
@@ -15,7 +16,7 @@ interface iCreateCharacterParams {
 }
 
 interface iCharacter {
-  _id?: string | Types.ObjectId,
+  _id: string | Types.ObjectId,
   name: string,
   race: string,
   class: Array<{ name: string, level: number }>

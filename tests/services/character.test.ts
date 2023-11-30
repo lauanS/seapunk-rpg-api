@@ -3,6 +3,8 @@ import ListCharacterService from '@/services/character/list';
 import CharacterRepository from '@/repositories/inMemoryDb/character';
 
 import { describe, expect, test } from 'vitest';
+import FindByIdCharacterService from '@/services/character/findById';
+import { iCharacter } from '@/@types/character';
 
 const defaultCharacter = {
   name: 'Francisco',
@@ -16,7 +18,7 @@ const defaultCharacter = {
   level: 1
 };
 
-describe('Create character', () => {
+describe('Character: Create', () => {
   test('Basic case', async () => {
     const characterRepository = new CharacterRepository();
     const createCharacterService = new CreateCharacterService(characterRepository);
@@ -51,7 +53,7 @@ describe('Create character', () => {
   });
 });
 
-describe('List character', () => {
+describe('Character: List', () => {
   test('Basic case', async () => {
     /* Setup */
     const characterRepository = new CharacterRepository();
@@ -69,5 +71,48 @@ describe('List character', () => {
 
     expect(listedCharacters).instanceOf(Array);
     expect(listedCharacters.length).equals(nInserts);
+  });
+});
+
+describe('Character: Find by id', () => {
+  test('Basic case', async () => {
+    /* Setup */
+    const characterRepository = new CharacterRepository();
+    const createCharacterService = new CreateCharacterService(characterRepository);
+    const listCharacterService = new ListCharacterService(characterRepository);
+    const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
+
+    /* Searching for N inserts */
+    const nInserts = 5;
+
+    for (let i = 0; i < nInserts; i++) {
+      await createCharacterService.execute(defaultCharacter);
+    }
+
+    const listedCharacters = await listCharacterService.execute();
+
+    listedCharacters.forEach(async (character: iCharacter) => {
+      const searchParams = {
+        id: character._id.toString()
+      };
+
+      const foundCharacter = await findByIdCharacterService.execute(searchParams);
+
+      expect(foundCharacter?._id).equals(character._id);
+    });
+  });
+
+  test('Searching for characters does not exist', async () => {
+    /* Setup */
+    const characterRepository = new CharacterRepository();
+    const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
+
+    const searchParams = {
+      id: 'invalid-id'
+    };
+
+    const foundCharacter = await findByIdCharacterService.execute(searchParams);
+
+    expect(foundCharacter).toBe(null);
   });
 });

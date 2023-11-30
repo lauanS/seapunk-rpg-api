@@ -9,4 +9,8 @@ export default class implements iCharacterRepository {
   list(): Promise<iCharacter[]> {
     return CharacterModel.find().exec();
   }
+
+  findById(id: string): Promise<iCharacter | null> {
+    return CharacterModel.findById(id).lean().exec();
+  }
 }
