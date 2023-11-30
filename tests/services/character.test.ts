@@ -1,10 +1,10 @@
+import { iCharacter } from '@/@types/character';
+import { describe, expect, test } from 'vitest';
+
+import CharacterRepository from '@/repositories/inMemoryDb/character';
 import CreateCharacterService from '@/services/character/create';
 import ListCharacterService from '@/services/character/list';
-import CharacterRepository from '@/repositories/inMemoryDb/character';
-
-import { describe, expect, test } from 'vitest';
 import FindByIdCharacterService from '@/services/character/findById';
-import { iCharacter } from '@/@types/character';
 
 const defaultCharacter = {
   name: 'Francisco',
@@ -102,7 +102,7 @@ describe('Character: Find by id', () => {
     });
   });
 
-  test('Searching for characters does not exist', async () => {
+  test('Searching for characters that do not exist', async () => {
     /* Setup */
     const characterRepository = new CharacterRepository();
     const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
