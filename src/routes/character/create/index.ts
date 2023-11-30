@@ -1,5 +1,6 @@
+import { iCreateCharacterParams } from '@/@types/character';
 import { Request, Response } from 'express';
-import { Service } from '@/services';
+import { Service } from '@/services/protocols';
 import { z } from 'zod';
 
 export default class CreateCharacterRoute {
@@ -19,7 +20,7 @@ export default class CreateCharacterRoute {
     }
   }
 
-  private validate (req: Request) : createCharacterParams {
+  private validate (req: Request) : iCreateCharacterParams {
     try {
       const schemaValidator = z.object({
         name: z.string(),

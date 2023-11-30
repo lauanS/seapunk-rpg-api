@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Service } from '@/services';
+import { Service } from '@/services/protocols';
 
 export default class ListCharacterRoute {
   constructor (

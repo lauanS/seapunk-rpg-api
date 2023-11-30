@@ -1,12 +1,12 @@
-import { CharacterRepository } from '@/repositories/_interfaces/character';
+import { iCharacter, iCharacterRepository, iCreateCharacterParams } from '@/@types/character';
 import CharacterModel from '@/models/Character';
 
-export default class implements CharacterRepository {
-  create(params: createCharacterParams): Promise<unknown> {
+export default class implements iCharacterRepository {
+  create(params: iCreateCharacterParams): Promise<iCharacter> {
     return CharacterModel.create(params);
   }
 
-  list(): Promise<unknown> {
+  list(): Promise<iCharacter[]> {
     return CharacterModel.find().exec();
   }
 }

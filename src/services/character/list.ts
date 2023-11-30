@@ -1,9 +1,9 @@
-import { CharacterRepository } from '@/repositories/_interfaces/character';
-import { Service } from '@/services';
+import { iCharacterRepository } from '@/@types/character';
+import { Service } from '@/services/protocols';
 
 export default class ListCharacterService implements Service {
   constructor (
-    private characterRepository: CharacterRepository
+    private characterRepository: iCharacterRepository
   ) {}
 
   async execute () {
