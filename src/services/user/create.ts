@@ -1,4 +1,4 @@
-import { iCreateUserParams, iUser, iUserRepository } from '@/@types/user';
+import { iCreateUserParams, iUserRepository } from '@/@types/user';
 import { Service } from '@/services/protocols';
 
 export default class CreateUserService implements Service {
@@ -8,7 +8,7 @@ export default class CreateUserService implements Service {
 
   async execute (params: iCreateUserParams) {
     try {
-      const user = await this.repository.findById(params.email);
+      const user = await this.repository.findByEmail(params.email);
 
       if (user) {
         throw 'E-mail em uso';

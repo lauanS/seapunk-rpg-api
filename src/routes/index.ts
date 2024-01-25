@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { Express } from 'express-serve-static-core';
 
 import characterRouter from '@/routes/character/router';
+import userRouter from '@/routes/user/router';
 
 const routes = (app: Express) => {
   app.route('/')
@@ -10,6 +11,7 @@ const routes = (app: Express) => {
 
   app.use(express.json());
   app.use('/character', characterRouter);
+  app.use('/user', userRouter);
 };
 
 export default routes;
