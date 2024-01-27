@@ -1,4 +1,5 @@
 import { iCreateUserParams, iUserRepository } from '@/@types/user';
+import { encryptPassword } from '@/utils/crypto';
 import { Service } from '@/services/protocols';
 
 export default class CreateUserService implements Service {
@@ -13,6 +14,8 @@ export default class CreateUserService implements Service {
       if (user) {
         throw 'E-mail em uso';
       }
+
+      params.password = await encryptPassword(params.password);
 
       const createdCharacter = await this.repository.create(params);
       if (!createdCharacter) {
