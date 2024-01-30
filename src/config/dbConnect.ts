@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const connection_string:string = process.env.MONGODB_URI || '';
+const CONNECTION_STRING:string = process.env.MONGODB_URI || '';
 
-async function dbConnect() {
+async function dbConnect(connectionString: string = CONNECTION_STRING) {
   const connection = mongoose.connection;
 
   connection.on('error', (error) => {
@@ -17,7 +17,7 @@ async function dbConnect() {
     console.log('Conectado!');
   });
 
-  await mongoose.connect(connection_string);
+  await mongoose.connect(connectionString);
 
   return connection;
 }
