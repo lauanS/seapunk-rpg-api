@@ -1,3 +1,4 @@
+import 'express-async-errors';
 import express from 'express';
 import dbConnect from '@/config/dbConnect';
 import routes from '@/routes';
