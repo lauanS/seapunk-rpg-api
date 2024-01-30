@@ -13,6 +13,7 @@ module.exports = {
   },
   'extends':  ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   'rules': {
+    '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
     'indent': ['error', 2],
     'linebreak-style': ['error', 'unix'],
     'capitalized-comments': ['warn'],
