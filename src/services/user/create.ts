@@ -1,7 +1,8 @@
 import { iCreateUserParams, iUserRepository } from '@/@types/user';
-import { ElegantError } from '@/utils/ErrorHandler';
+import { BadRequestError, ElegantError } from '@/utils/ErrorHandler';
 import { Service } from '@/services/protocols';
 import { encryptPassword } from '@/utils/crypto';
+import { z } from 'zod';
 
 export default class CreateUserService implements Service {
   constructor (
@@ -9,6 +10,8 @@ export default class CreateUserService implements Service {
   ) {}
 
   async execute (params: iCreateUserParams) {
+    params = this.validate(params);
+
     const user = await this.repository.findByEmail(params.email);
 
     if (user) {
@@ -23,5 +26,21 @@ export default class CreateUserService implements Service {
     }
 
     return 'Usuário cadastrado com sucesso';
+  }
+
+  private validate (params: unknown): iCreateUserParams {
+    const schemaValidator = z.object({
+      name: z.string(),
+      email: z.string(),
+      password: z.string()
+    });
+
+    const bodyParsed = schemaValidator.safeParse(params);
+
+    if (!bodyParsed.success) {
+      throw new BadRequestError('As informações fornecidas são inválidas');
+    }
+
+    return bodyParsed.data;
   }
 }
