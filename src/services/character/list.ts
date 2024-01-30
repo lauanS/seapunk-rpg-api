@@ -7,11 +7,6 @@ export default class ListCharacterService implements Service {
   ) {}
 
   async execute () {
-    try {
-      return await this.characterRepository.list();
-    } catch (error) {
-      console.log('Service error:', error);
-      throw 'Erro no serviço';
-    }
+    return await this.characterRepository.list();
   }
 }

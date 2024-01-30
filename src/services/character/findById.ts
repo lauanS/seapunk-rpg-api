@@ -7,15 +7,10 @@ export default class FindByIdCharacterService implements Service {
   ) {}
 
   async execute (params: { id: string }) {
-    try {
-      const { id } = params;
+    const { id } = params;
 
-      const foundCharacter = await this.characterRepository.findById(id);
+    const foundCharacter = await this.characterRepository.findById(id);
 
-      return foundCharacter;
-    } catch (error) {
-      console.log('Service error:', error);
-      throw 'Erro no serviço';
-    }
+    return foundCharacter;
   }
 }
