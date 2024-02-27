@@ -1,9 +1,10 @@
-import express from 'express';
+import dotenv from 'dotenv';
+import path from 'path';
 
-const app = express();
+const envPath = path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`);
 
-app.get('/', (req, res) => {
-  res.send('Seapunk 1.0');
+dotenv.config({
+  path: envPath
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+import './app';
