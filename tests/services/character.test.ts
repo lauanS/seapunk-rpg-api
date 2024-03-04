@@ -1,7 +1,7 @@
 import { iCharacter } from '@/@types/character';
 import { describe, expect, test } from 'vitest';
 
-import CharacterRepository from '@/repositories/inMemoryDb/character';
+import CharacterRepository from '@/repositories/_inMemoryDb/character';
 import CreateCharacterService from '@/services/character/create';
 import ListCharacterService from '@/services/character/list';
 import FindByIdCharacterService from '@/services/character/findById';
