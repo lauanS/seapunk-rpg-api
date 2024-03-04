@@ -30,15 +30,18 @@ export default class CreateUserService implements Service {
 
   private validate (params: unknown): iCreateUserParams {
     const schemaValidator = z.object({
-      name: z.string(),
-      email: z.string(),
+      name: z.string()
+        .min(3, 'O nome deve conter pelo menos 3 caracteres'),
+      email: z.string()
+        .email('E-mail inválido'),
       password: z.string()
+        .min(1, 'Senha não informada')
     });
 
     const bodyParsed = schemaValidator.safeParse(params);
 
     if (!bodyParsed.success) {
-      throw new BadRequestError('As informações fornecidas são inválidas');
+      throw new BadRequestError(bodyParsed.error.errors[0].message);
     }
 
     return bodyParsed.data;
