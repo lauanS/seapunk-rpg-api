@@ -1,14 +1,14 @@
-import { iCharacterRepository, iCreateCharacterParams } from '@/@types/character';
+import { ICharacterRepository, ICreateCharacterParams } from '@/@types/character';
 import { BadRequestError, ElegantError } from '@/utils/ErrorHandler';
 import { Service } from '@/services/protocols';
 import { z } from 'zod';
 
 export default class CreateCharacterService implements Service {
   constructor (
-    private characterRepository: iCharacterRepository
+    private characterRepository: ICharacterRepository
   ) {}
 
-  async execute (params: iCreateCharacterParams) {
+  async execute (params: ICreateCharacterParams) {
     params = this.validate(params);
 
     const createdCharacter = await this.characterRepository.create(params);
@@ -20,7 +20,7 @@ export default class CreateCharacterService implements Service {
     return 'Personagem cadastrado com sucesso';
   }
 
-  private validate (params: unknown): iCreateCharacterParams {
+  private validate (params: unknown): ICreateCharacterParams {
     const schemaValidator = z.object({
       name: z.string(),
       race: z.string(),

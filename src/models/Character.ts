@@ -1,7 +1,7 @@
-import { iCharacter } from '@/@types/character';
+import { ICharacter } from '@/@types/character';
 import { Schema, model } from 'mongoose';
 
-const CharacterSchema = new Schema<iCharacter>({
+const CharacterSchema = new Schema<ICharacter>({
   name: { type: 'string', required: true },
   avatar: { type: 'string' },
   race: { type: 'string' },
@@ -67,6 +67,6 @@ const CharacterSchema = new Schema<iCharacter>({
   ]
 }, { versionKey: false });
 
-const Character = model<iCharacter>('character', CharacterSchema);
+const Character = model<ICharacter>('character', CharacterSchema);
 
 export default Character;

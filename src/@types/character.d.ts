@@ -1,12 +1,12 @@
 import { Types } from 'mongoose';
 
-interface iCharacterRepository {
-  create(params: iCreateCharacterParams): Promise<iCharacter>;
-  list(): Promise<iCharacter[]>;
-  findById(id: string): Promise<iCharacter|null>;
+interface ICharacterRepository {
+  create(params: ICreateCharacterParams): Promise<ICharacter>;
+  list(): Promise<ICharacter[]>;
+  findById(id: string): Promise<ICharacter|null>;
 }
 
-interface iCreateCharacterParams {
+interface ICreateCharacterParams {
   name: string;
   race: string;
   class: Array<{ name: string; level: number }>;
@@ -15,7 +15,7 @@ interface iCreateCharacterParams {
   level: number;
 }
 
-interface iCharacter {
+interface ICharacter {
   _id: string | Types.ObjectId,
   name: string,
   race: string,

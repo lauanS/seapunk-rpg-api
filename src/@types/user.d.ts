@@ -1,17 +1,17 @@
-export interface iUser {
+export interface IUser {
   email: string;
   name: string;
   password: string;
 }
 
-interface iUserRepository {
-  create(params: iCreateUserParams): Promise<iUser>;
-  list(): Promise<iUser[]>;
-  findById(id: string): Promise<iUser|null>;
-  findByEmail(email: string): Promise<iUser|null>;
+interface IUserRepository {
+  create(params: ICreateUserParams): Promise<IUser>;
+  list(): Promise<IUser[]>;
+  findById(id: string): Promise<IUser|null>;
+  findByEmail(email: string): Promise<IUser|null>;
 }
 
-export interface iCreateUserParams {
+export interface ICreateUserParams {
   email: string;
   name: string;
   password: string;

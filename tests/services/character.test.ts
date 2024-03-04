@@ -1,4 +1,4 @@
-import { iCharacter } from '@/@types/character';
+import { ICharacter } from '@/@types/character';
 import { describe, expect, test } from 'vitest';
 
 import CharacterRepository from '@/repositories/_inMemoryDb/character';
@@ -91,7 +91,7 @@ describe('Character: Find by id', () => {
 
     const listedCharacters = await listCharacterService.execute();
 
-    listedCharacters.forEach(async (character: iCharacter) => {
+    listedCharacters.forEach(async (character: ICharacter) => {
       const searchParams = {
         id: character._id.toString()
       };

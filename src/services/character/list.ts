@@ -1,9 +1,9 @@
-import { iCharacterRepository } from '@/@types/character';
+import { ICharacterRepository } from '@/@types/character';
 import { Service } from '@/services/protocols';
 
 export default class ListCharacterService implements Service {
   constructor (
-    private characterRepository: iCharacterRepository
+    private characterRepository: ICharacterRepository
   ) {}
 
   async execute () {

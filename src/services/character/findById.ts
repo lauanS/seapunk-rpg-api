@@ -1,11 +1,11 @@
-import { iCharacterRepository } from '@/@types/character';
+import { ICharacterRepository } from '@/@types/character';
 import { BadRequestError } from '@/utils/ErrorHandler';
 import { Service } from '@/services/protocols';
 import { z } from 'zod';
 
 export default class FindByIdCharacterService implements Service {
   constructor (
-    private characterRepository: iCharacterRepository
+    private characterRepository: ICharacterRepository
   ) {}
 
   async execute (params: { id: string }) {

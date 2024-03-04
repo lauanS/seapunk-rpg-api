@@ -1,12 +1,12 @@
-import { iCharacter, iCharacterRepository, iCreateCharacterParams } from '@/@types/character';
+import { ICharacter, ICharacterRepository, ICreateCharacterParams } from '@/@types/character';
 
-export default class implements iCharacterRepository {
-  private db:iCharacter[] = [];
+export default class implements ICharacterRepository {
+  private db:ICharacter[] = [];
   private idCount:number = 0;
 
-  create(params: iCreateCharacterParams): Promise<iCharacter> {
-    return new Promise<iCharacter>((resolve) => {
-      const newCharacter:iCharacter = { _id: this.idCount.toString(), ...params };
+  create(params: ICreateCharacterParams): Promise<ICharacter> {
+    return new Promise<ICharacter>((resolve) => {
+      const newCharacter:ICharacter = { _id: this.idCount.toString(), ...params };
 
       this.db.push(newCharacter);
       this.idCount++;
@@ -15,13 +15,13 @@ export default class implements iCharacterRepository {
     });
   }
 
-  list(): Promise<iCharacter[]> {
-    return new Promise<iCharacter[]>((resolve) => resolve(this.db));
+  list(): Promise<ICharacter[]> {
+    return new Promise<ICharacter[]>((resolve) => resolve(this.db));
   }
 
-  findById(id: string): Promise<iCharacter|null> {
-    return new Promise<iCharacter|null>((resolve) => {
-      const foundCharacter = this.db.find((character: iCharacter) => {
+  findById(id: string): Promise<ICharacter|null> {
+    return new Promise<ICharacter|null>((resolve) => {
+      const foundCharacter = this.db.find((character: ICharacter) => {
         return character._id === id;
       });
 
