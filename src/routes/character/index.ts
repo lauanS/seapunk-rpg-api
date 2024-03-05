@@ -1,20 +1,31 @@
-import express from 'express';
-import CharacterController from 'controllers/characterController';
+import { Request, Response } from 'express';
 
-const routes = express.Router();
+import CharacterRepository from '@/repositories/character';
+const characterRepository = new CharacterRepository();
 
-/* GET */
-routes.get('/characters', CharacterController.list);
-routes.get('/characters/busca', CharacterController.listByName); // No express, a ordem das rotas importa. Se essa rota estivesse antes da rota /characters/:id, ela seria interpretada como um id
-routes.get('/characters/:id', CharacterController.findById);
+/* Create */
+import CreateCharacterService from '@/services/character/create';
+import CreateCharacterRoute from '@/routes/character/create';
 
-/* POST */
-routes.post('/characters', CharacterController.create);
+const createCharacterService = new CreateCharacterService(characterRepository);
+const createCharacterRoute = new CreateCharacterRoute(createCharacterService);
 
-/* PUT */
-routes.put('/characters/:id', CharacterController.updateById);
+/* List */
+import ListCharacterService from '@/services/character/list';
+import ListCharacterRoute from '@/routes/character/list';
 
-/* DELETE */
-routes.delete('/characters/:id', CharacterController.deleteById);
+const listCharacterService = new ListCharacterService(characterRepository);
+const listCharacterRoute = new ListCharacterRoute(listCharacterService);
 
-export default routes;
+/* Find by Id */
+import FindByIdCharacterService from '@/services/character/findById';
+import FindByIdCharacterRoute from '@/routes/character/findById';
+
+const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
+const findByIdCharacterRoute = new FindByIdCharacterRoute(findByIdCharacterService);
+
+export default {
+  create: (req: Request, res: Response) => createCharacterRoute.controller(req, res),
+  list: (req: Request, res: Response) => listCharacterRoute.controller(req, res),
+  findById: (req: Request, res: Response) => findByIdCharacterRoute.controller(req, res)
+};

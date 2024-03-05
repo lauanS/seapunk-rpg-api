@@ -1,10 +1,12 @@
 {
   "compilerOptions": {    
     "outDir": "./dist/",
-    "rootDir": "./src/",
 
-    "moduleResolution": "node",
-    "baseUrl": "./src/",
+    "types": ["./src/@types/character.d.ts"],
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
    
     "target": "es2016",
     "module": "commonjs",
@@ -13,6 +15,7 @@
     "noImplicitAny": true,
 
     "noEmitOnError": true,
+
     /* Type Checking */
     "strict": true,
     "skipLibCheck": true
