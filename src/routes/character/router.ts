@@ -4,7 +4,7 @@ import characterRoutes from '@/routes/character';
 const router = express.Router();
 
 router.post('/create', characterRoutes.create);
-router.post('/list', characterRoutes.list);
-router.post('/find-by-id', characterRoutes.findById);
+router.get('/list', characterRoutes.list);
+router.get('/find-by-id/:characterId', characterRoutes.findById);
 
 export default router;

@@ -6,7 +6,7 @@ export default class ListCharacterRoute {
     private service: Service
   ) {}
 
-  public async controller (req: Request, res: Response): Promise<void> {
+  public async controller (_req: Request, res: Response): Promise<void> {
     const result = await this.service.execute();
 
     res.status(200).jsonp({ success: true, result: result });

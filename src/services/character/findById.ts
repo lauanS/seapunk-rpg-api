@@ -8,19 +8,19 @@ export default class FindByIdCharacterService implements Service {
     private characterRepository: ICharacterRepository
   ) {}
 
-  async execute (params: { id: string }) {
+  async execute (params: { characterId: string }) {
     params = this.validate(params);
 
-    const { id } = params;
+    const { characterId } = params;
 
-    const foundCharacter = await this.characterRepository.findById(id);
+    const foundCharacter = await this.characterRepository.findById(characterId);
 
     return foundCharacter;
   }
 
-  private validate (params: unknown): { id: string } {
+  private validate (params: unknown): { characterId: string } {
     const schemaValidator = z.object({
-      id: z.string()
+      characterId: z.string()
     });
 
     const bodyParsed = schemaValidator.safeParse(params);

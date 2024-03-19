@@ -7,7 +7,7 @@ export default class FindByIdCharacterRoute {
   ) {}
 
   public async controller (req: Request, res: Response): Promise<void> {
-    const result = await this.findByIdCharacterService.execute(req.body);
+    const result = await this.findByIdCharacterService.execute({ ...req.params, ...req.body });
 
     res.status(200).jsonp({ success: true, result: result });
   }
