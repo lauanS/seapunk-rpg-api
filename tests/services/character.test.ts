@@ -93,7 +93,7 @@ describe('Character: Find by id', () => {
 
     listedCharacters.forEach(async (character: ICharacter) => {
       const searchParams = {
-        id: character._id.toString()
+        characterId: character._id.toString()
       };
 
       const foundCharacter = await findByIdCharacterService.execute(searchParams);
@@ -108,7 +108,7 @@ describe('Character: Find by id', () => {
     const findByIdCharacterService = new FindByIdCharacterService(characterRepository);
 
     const searchParams = {
-      id: 'invalid-id'
+      characterId: 'invalid-id'
     };
 
     const foundCharacter = await findByIdCharacterService.execute(searchParams);
