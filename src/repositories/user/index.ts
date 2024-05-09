@@ -1,8 +1,9 @@
-import { ICreateUserParams, IUser, IUserRepository } from '@/@types/user';
+import { IRegisterAuthParams } from '@/@types/auth';
+import { IUser, IUserRepository } from '@/@types/user';
 import UserModel from '@/models/User';
 
 export default class UserRepository implements IUserRepository {
-  create(params: ICreateUserParams): Promise<IUser> {
+  create(params: IRegisterAuthParams): Promise<IUser> {
     return UserModel.create(params);
   }
 

@@ -1,15 +1,18 @@
-import { ICreateUserParams, IUserRepository } from '@/@types/user';
+import { IUserRepository } from '@/@types/user';
+import { IRegisterAuthParams } from '@/@types/auth';
 import { BadRequestError, ElegantError } from '@/utils/ErrorHandler';
 import { Service } from '@/services/protocols';
 import { encryptPassword } from '@/utils/crypto';
 import { z } from 'zod';
 
-export default class CreateUserService implements Service {
+import UserRepository from '@/repositories/user';
+
+export default class RegisterAuthService implements Service {
   constructor (
-    private repository: IUserRepository
+    private repository: IUserRepository = new UserRepository()
   ) {}
 
-  async execute (params: ICreateUserParams) {
+  async execute (params: IRegisterAuthParams) {
     params = this.validate(params);
 
     const user = await this.repository.findByEmail(params.email);
@@ -28,7 +31,7 @@ export default class CreateUserService implements Service {
     return 'Usuário cadastrado com sucesso';
   }
 
-  private validate (params: unknown): ICreateUserParams {
+  private validate (params: unknown): IRegisterAuthParams {
     const schemaValidator = z.object({
       name: z.string()
         .min(3, 'O nome deve conter pelo menos 3 caracteres'),
